@@ -1,0 +1,32 @@
+# Joins an installer that ./verbump uploaded to a draft release in parts, since a release upload
+# cannot resume. Only someone with write access can start it.
+name: Join release parts
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        required: true
+      name:
+        required: true
+      sha256:
+        required: true
+permissions:
+  contents: write
+jobs:
+  join:
+    runs-on: ubuntu-latest
+    steps:
+      - env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ inputs.tag }}
+          NAME: ${{ inputs.name }}
+          SHA256: ${{ inputs.sha256 }}
+        run: |
+          set -euo pipefail
+          gh release download "$TAG" -R "$GITHUB_REPOSITORY" -p "$NAME.part-*" -D parts
+          cat parts/* > "$NAME"
+          echo "$SHA256  $NAME" | sha256sum -c -
+          gh release upload "$TAG" "$NAME" -R "$GITHUB_REPOSITORY" --clobber
+          for part in parts/*; do
+            gh release delete-asset "$TAG" "${part#parts/}" -R "$GITHUB_REPOSITORY" -y
+          done
