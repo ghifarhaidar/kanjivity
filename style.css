@@ -29,8 +29,7 @@ main, footer { max-width: 40rem; margin: 0 auto; padding: 0 16px; }
 main { padding-top: 32px; }
 h1 { font-size: 2rem; margin: 0 0 8px; }
 h2 { font-size: 1.25rem; margin: 32px 0 8px; }
-p, li { color: var(--text); }
-.lead, .meta, .note, footer { color: var(--muted); }
+.lead, .meta, footer { color: var(--muted); }
 ul { padding-left: 1.25rem; }
 a { color: var(--accent); }
 .card { background: var(--card); border-radius: 12px; padding: 16px; margin: 12px 0; }
