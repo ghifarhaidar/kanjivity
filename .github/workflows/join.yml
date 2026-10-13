@@ -1,4 +1,4 @@
-# Joins an installer that ./verbump uploaded to a draft release in parts, since a release upload
+# Joins a file that ./verbump uploaded to a draft release in parts, since a release upload
 # cannot resume. Only someone with write access can start it.
 name: Join release parts
 on:
