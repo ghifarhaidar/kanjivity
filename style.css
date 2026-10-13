@@ -3,7 +3,7 @@
   --text: #E6E6E6;
   --muted: #BDBDBD;
   --card: #2B2B2B;
-  --accent: #FF6A4D;
+  --accent: #9CCB6B;
   --on-accent: #121212;
 }
 @media (prefers-color-scheme: light) {
@@ -12,7 +12,7 @@
     --text: #1A1A1A;
     --muted: #4D4D4D;
     --card: #ECECEC;
-    --accent: #C4321A;
+    --accent: #4E7A27;
     --on-accent: #FFFFFF;
   }
 }
